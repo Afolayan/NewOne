@@ -3,12 +3,16 @@ package ng.com.iqubesolutions.drinkshub.adapter;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import ng.com.iqubesolutions.drinkshub.R;
@@ -44,17 +48,24 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         TextView navTitle, navCounter;
         ImageView navIcon;
         Context context;
+        RelativeLayout layout;
+        View view;
+        LinearLayout counterLayout;
 
         public ViewHolder(View drawerItem, Context context){
 
             super(drawerItem);
+
 
             this.context = context;
 
             navCounter = (TextView) itemView.findViewById(R.id.tv_NavCounter);
             navTitle = (TextView) itemView.findViewById(R.id.tv_NavTitle);
             navIcon = (ImageView) itemView.findViewById(R.id.iv_NavIcon);
-            navIcon.setColorFilter( context.getResources().getColor(R.color.light_grey) , Mode.MULTIPLY);
+            layout = (RelativeLayout) itemView.findViewById(R.id.drawer_row_layout);
+            //counterLayout = (LinearLayout) itemView.findViewById(R.id.counter_layout);
+            view = itemView.findViewById(R.id.bottom_line);
+            navIcon.setColorFilter(ContextCompat.getColor(context, R.color.light_grey) , Mode.MULTIPLY);
         }
     }
 
@@ -83,27 +94,37 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         if(position == 0){
         }
             holder.navCounter.setVisibility(View.GONE);
-        if(position == selected_item){
-            holder.navTitle.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
-            holder.navIcon.setColorFilter(context.getResources().getColor(R.color.colorPrimaryDark), Mode.MULTIPLY);
+        if(position == selected_item ){
+            if (position != 2 || holder.navTitle.getText().toString().equals("Accounts")){
+                holder.navTitle.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+                holder.navIcon.setColorFilter(ContextCompat.getColor(context, R.color.colorAccent), Mode.MULTIPLY);
+                holder.layout.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
+            }
+
         } else {
             holder.navTitle.setTextColor(Color.BLACK);
-            holder.navIcon.setColorFilter( context.getResources().getColor(R.color.light_grey) , Mode.MULTIPLY);
+            holder.layout.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
+            holder.navIcon.setColorFilter( ContextCompat.getColor(context, R.color.gray_bg) , Mode.MULTIPLY);
         }
 
-            if ( position != 0 ){
-                switch (position){
-                    case 4:{
-                        holder.navCounter.setVisibility(View.GONE);
-                        //if count is greater than zero
-                        holder.navCounter.setText("3");
-                        holder.navCounter.setVisibility(View.VISIBLE);
-                    }
+        if ( position != 0 ){
+            switch (position){
+                /*case 4:{
+                    holder.navCounter.setVisibility(View.GONE);
+                    //if count is greater than zero
+                    holder.navCounter.setText("3");
+                    holder.navCounter.setVisibility(View.VISIBLE);
+                }*/
 
-                }
-                holder.navTitle.setText(titles[position - 1]);
-                holder.navIcon.setImageResource(icons.getResourceId(position-1, -1));
             }
+            holder.navTitle.setText(titles[position - 1]);
+            holder.navIcon.setImageResource(icons.getResourceId(position-1, -1));
+
+        }else{
+            holder.view.setVisibility(View.VISIBLE);
+            holder.navTitle.setText("Drinks");
+            holder.navTitle.setTextColor(ContextCompat.getColor(context, R.color.site_blue));
+        }
     }
 
     /**

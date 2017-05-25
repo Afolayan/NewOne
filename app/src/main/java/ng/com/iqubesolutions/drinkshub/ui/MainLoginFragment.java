@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ng.com.iqubesolutions.drinkshub.R;
-import ng.com.iqubesolutions.drinkshub.adapter.LoginFragmentAdapter;
+import ng.com.iqubesolutions.drinkshub.adapter.LoginPagerAdapter;
 
 public class MainLoginFragment extends Fragment {
 
@@ -27,9 +27,11 @@ public class MainLoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main_login, container, false);
         tabLayout = (TabLayout)view.findViewById(R.id.tabs);
         viewPager = (ViewPager)view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(new LoginFragmentAdapter(getChildFragmentManager()));
+        //viewPager.setAdapter(new LoginPagerAdapter(getChildFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
 
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorAccent));
+        tabLayout.setSelectedTabIndicatorHeight(10);
         getActivity().setTitle("Login");
         return view;
     }

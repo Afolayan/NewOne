@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_row_layout"
     android:paddingBottom="8dp"
     android:paddingTop="8dp"
-    android:background="@drawable/nav_drawer_selector"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:clickable="true" >
-
+<!--android:background="@drawable/navigation_drawer_selector"-->
     <RelativeLayout
+        android:id="@+id/others"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginLeft="16dp"
             android:id="@+id/iv_NavIcon"
             android:layout_gravity="center_vertical" />
@@ -23,8 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_NavTitle"
-            android:textColor="@color/light_grey"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:layout_gravity="center_vertical"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/iv_NavIcon"
@@ -32,16 +33,24 @@
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp" />
 
-        <TextView android:id="@+id/tv_NavCounter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/counter_bg"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="8dp"
-            android:textColor="@color/white"
-            android:text="0"
-            android:visibility="gone" />
+            <TextView
+                android:layout_alignEnd="@+id/tv_NavTitle"
+                android:layout_toEndOf="@+id/tv_NavTitle"
+                android:layout_marginEnd="8dp"
+                android:id="@+id/tv_NavCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:background="@drawable/counter_bg"
+                android:text="0"
+                android:visibility="gone" />
     </RelativeLayout>
 
+    <View
+        android:layout_below="@+id/others"
+        android:background="@color/light_grey"
+        android:id="@+id/bottom_line"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="1dp"/>
 </RelativeLayout>

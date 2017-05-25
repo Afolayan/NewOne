@@ -30,12 +30,11 @@
                 android:background="@drawable/rounded_edittext"
                 android:paddingTop="2dp">
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
                     android:id="@+id/et_first_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:inputType="textPersonName"
                     android:paddingEnd="0dp"
                     android:paddingStart="8dp"
                     />
@@ -50,12 +49,11 @@
                 android:hint="@string/last_name"
                 android:layout_marginTop="10dp" >
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
                     android:id="@+id/et_last_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:inputType="textPersonName"
                     />
 
             </android.support.design.widget.TextInputLayout>
@@ -67,12 +65,11 @@
                 android:hint="@string/email"
                 android:layout_marginTop="10dp" >
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
                     android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:inputType="textEmailAddress"
                     />
 
             </android.support.design.widget.TextInputLayout>
@@ -84,7 +81,7 @@
                 android:hint="@string/password"
                 android:layout_marginTop="10dp" >
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -101,7 +98,7 @@
                 android:hint="@string/confirm_password"
                 android:layout_marginTop="10dp" >
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
                     android:id="@+id/et_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -119,12 +116,11 @@
                 android:hint="@string/address"
                 android:layout_marginTop="10dp" >
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
                     android:id="@+id/et_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:inputType="textPostalAddress"
                     />
 
             </android.support.design.widget.TextInputLayout>
@@ -136,7 +132,7 @@
                 android:hint="@string/country"
                 android:layout_marginTop="10dp" >
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
                     android:id="@+id/et_country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,7 +148,7 @@
                 android:hint="@string/state"
                 android:layout_marginTop="10dp" >
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
                     android:id="@+id/et_state"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -168,12 +164,11 @@
                 android:hint="@string/lga"
                 android:layout_marginTop="10dp" >
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
                     android:id="@+id/et_lga"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:inputType="textPostalAddress"
                     />
 
             </android.support.design.widget.TextInputLayout>

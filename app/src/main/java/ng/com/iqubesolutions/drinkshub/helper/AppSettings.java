@@ -1,7 +1,7 @@
 package ng.com.iqubesolutions.drinkshub.helper;
 
 /**
- * Created by iqube on 5/24/17.
+ * Created by Afolayan Oluwaseyi on 5/24/17.
  */
 
 public class AppSettings {

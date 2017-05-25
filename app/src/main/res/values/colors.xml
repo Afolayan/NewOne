@@ -12,6 +12,7 @@
     <color name="my_grey">#727272</color>
     <color name="light_grey">#a6a4a4</color>
     <color name="my_black" >#232222</color>
+    <color name="line_grey" >#d1c9c9</color>
     <color name="navdrawer_icon_tint">#888</color>
     <color name="colorCounterBackground">#34B5E5</color>
     <color name="gray_bg">#E5E5E5</color>

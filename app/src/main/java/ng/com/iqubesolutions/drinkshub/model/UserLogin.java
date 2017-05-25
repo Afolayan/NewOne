@@ -3,7 +3,7 @@ package ng.com.iqubesolutions.drinkshub.model;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by iqube on 5/24/17.
+ * Created by Afolayan Oluwaseyi on 5/24/17.
  */
 
 public class UserLogin  {
@@ -29,7 +29,7 @@ public class UserLogin  {
         this.password = password;
     }
 
-    public class Response{
+    public class LoginResponse{
         @SerializedName("status")
         String status;
 

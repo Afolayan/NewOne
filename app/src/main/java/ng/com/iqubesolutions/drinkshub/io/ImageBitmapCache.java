@@ -1,7 +1,7 @@
 package ng.com.iqubesolutions.drinkshub.io;
 
 /**
- * Created by iqube on 5/24/17.
+ * Created by Afolayan Oluwaseyi on 5/24/17.
  */
 
 import com.android.volley.toolbox.ImageLoader.ImageCache;

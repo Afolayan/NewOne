@@ -1,11 +1,12 @@
 package ng.com.iqubesolutions.drinkshub.io;
 
 /**
- * Created by iqube on 5/24/17.
+ * Created by Afolayan Oluwaseyi on 5/24/17.
  */
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -19,7 +20,12 @@ import java.util.Map;
 
 import ng.com.iqubesolutions.drinkshub.app.DrinksHub;
 import ng.com.iqubesolutions.drinkshub.helper.AppSettings;
+import ng.com.iqubesolutions.drinkshub.io.jsonhandler.ResponseHandler;
+import ng.com.iqubesolutions.drinkshub.model.RegisterUser;
+
 import static ng.com.iqubesolutions.drinkshub.helper.UIHelper.showErrorDialog;
+import static ng.com.iqubesolutions.drinkshub.helper.AccountUtils.hasSignedIn;
+import static ng.com.iqubesolutions.drinkshub.helper.AccountUtils.setUserToken;
 public class APIClient {
 
     public static final String TAG = APIClient.class.getSimpleName();
@@ -42,7 +48,18 @@ public class APIClient {
                             @Override
                             public void onResponse(String response) {
                                 Log.e(TAG, "response login" + response);
-                                if( response.contains("html")){
+                                if(! response.contains("html")){
+
+                                    String[] parsedResponse =
+                                            ResponseHandler.getInstance().parseLoginResponse( response );
+                                    String comment = parsedResponse[0];
+                                    String token = parsedResponse[1];
+
+                                    Toast.makeText(context, "Message: "+comment, Toast.LENGTH_SHORT).show();
+                                    setUserToken(context, token);
+                                    hasSignedIn(context);
+
+                                } else {
                                     //response is not json, dont parse
                                 }
                                 dialog.hide();
@@ -71,9 +88,7 @@ public class APIClient {
         DrinksHub.getInstance().addToRequestQueue(stringRequest);
     }
 
-    public void doSignUp(final Context context, final String firstName,
-                         final String lastName, final String email, final String password,
-                         final String address, final String country, final String state, final String LGA){
+    public void doSignUp(final Context context, final RegisterUser user){
 
         String signupUrl = AppSettings.BASE_URL + AppSettings.SIGN_UP;
         final ProgressDialog dialog = new ProgressDialog( context );
@@ -87,6 +102,9 @@ public class APIClient {
                             @Override
                             public void onResponse(String response) {
                                 Log.e(TAG, "response signup "+response);
+                                String res = ResponseHandler.getInstance().parseSignUpResponse(response);
+
+                                Toast.makeText(context, "Message: "+res, Toast.LENGTH_SHORT).show();
                                 dialog.hide();
                             }
                         }, new Response.ErrorListener(){
@@ -101,14 +119,14 @@ public class APIClient {
                     @Override
                     protected Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<>();
-                        params.put("firstname", firstName);
-                        params.put("lastname", lastName);
-                        params.put("email", email);
-                        params.put("password", password);
-                        params.put("address", address);
-                        params.put("country", country);
-                        params.put("state", state);
-                        params.put("lga", LGA);
+                        params.put("firstname", user.getFirstName());
+                        params.put("lastname", user.getLastName());
+                        params.put("email", user.getEmail());
+                        params.put("password", user.getPassword());
+                        params.put("address", user.getAddress());
+                        params.put("country", user.getCountry());
+                        params.put("state", user.getState());
+                        params.put("lga", user.getLGA());
 
                         return params;
                     }

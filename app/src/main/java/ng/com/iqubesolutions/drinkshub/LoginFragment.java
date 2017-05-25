@@ -3,7 +3,6 @@ package ng.com.iqubesolutions.drinkshub;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -35,10 +34,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     private OnFragmentInteractionListener mListener;
 
     @Bind(R.id.et_login_email)
-    TextInputEditText emailTextView;
+    EditText emailTextView;
     @Bind(R.id.login_email_field) TextInputLayout emailField;
 
-    @Bind(R.id.et_login_password) TextInputEditText passwordTextView;
+    @Bind(R.id.et_login_password) EditText passwordTextView;
     @Bind(R.id.login_password_field) TextInputLayout passwordField;
     @Bind(R.id.btnLogin) Button loginBtn;
 
@@ -118,13 +117,5 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        //changing the fonts
-        FontChangeCrawler fontChanger = new FontChangeCrawler(getActivity().getAssets(), "fonts/proxima-nova-regular.ttf");
-        fontChanger.replaceFonts((ViewGroup) this.getView());
     }
 }

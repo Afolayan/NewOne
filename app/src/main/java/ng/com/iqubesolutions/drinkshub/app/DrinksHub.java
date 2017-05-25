@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley;
 
 import java.io.UnsupportedEncodingException;
 
+import ng.com.iqubesolutions.drinkshub.helper.TypeFaceUtil;
 import ng.com.iqubesolutions.drinkshub.io.ImageBitmapCache;
 
 
@@ -26,6 +27,7 @@ public class DrinksHub extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        TypeFaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/proxima-nova-regular.ttf");
     }
 
     public static synchronized DrinksHub getInstance() {

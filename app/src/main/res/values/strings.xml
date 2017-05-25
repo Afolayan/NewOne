@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Drinks Hub</string>
+    <string name="app_name">DrinksHub</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -30,30 +30,25 @@
     <string-array name="navDrawerIcons">
         <item>@drawable/feed</item>
         <item>@drawable/calendar</item>
-        <item>@drawable/post</item>
-        <item>@drawable/notification</item>
         <item>@drawable/account</item>
         <item>@drawable/logout</item>
     </string-array>
 
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
+    <string name="token">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUsImlzcyI6Imh0dHA6XC9cL2Fzay5uZXQubmdcL2RyaW5rc2h1YlwvZHJpbmtzaHViLWFwaVwvcHVibGljXC9hcGlcL3YxXC9jdXN0b21lclwvbG9naW4iLCJpYXQiOjE0OTU3MzI4MzQsImV4cCI6MTQ5NTgxOTIzNCwibmJmIjoxNDk1NzMyODM0LCJqdGkiOiIzTTF2S1hQYkVlS0VkcFpoIn0.C0igwWALZSWO06gE3E22Ap1Q_n4u4OfJ83sXpNBSqaY</string>
 
     <string-array name="navDrawerItems">
-        <item>Feed</item>
-        <item>Events</item>
-        <item>Post</item>
-        <item>Notifications</item>
+        <item>By Product types</item>
+        <item>By Pack Type</item>
         <item>Accounts</item>
         <item>Logout</item>
     </string-array>
 
-    <string name="page_1">Feed</string>
-    <string name="page_2">Events</string>
-    <string name="page_3">Post</string>
-    <string name="page_4">Notifications</string>
-    <string name="page_5">Accounts</string>
-    <string name="page_6">Logout</string>
+    <string name="page_1">By Product types</string>
+    <string name="page_2">By Pack Type</string>
+    <string name="page_3">Accounts</string>
+    <string name="page_4">Logout</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

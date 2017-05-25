@@ -3,9 +3,9 @@ package ng.com.iqubesolutions.drinkshub.ui;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +18,7 @@ import butterknife.OnClick;
 import ng.com.iqubesolutions.drinkshub.R;
 import ng.com.iqubesolutions.drinkshub.helper.FontChangeCrawler;
 import ng.com.iqubesolutions.drinkshub.io.APIClient;
+import ng.com.iqubesolutions.drinkshub.model.RegisterUser;
 
 import static ng.com.iqubesolutions.drinkshub.helper.UIHelper.isEmpty;
 import static ng.com.iqubesolutions.drinkshub.helper.UIHelper.setError;
@@ -28,31 +29,31 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
     private static final String TAG = SignupFragment.class.getSimpleName();
 
     @Bind(R.id.first_name_field)  TextInputLayout fNameField;
-    @Bind(R.id.et_first_name) TextInputEditText fName;
+    @Bind(R.id.et_first_name) EditText fName;
 
     @Bind(R.id.last_name_field) TextInputLayout lNameField;
-    @Bind(R.id.et_last_name) TextInputEditText lName;
+    @Bind(R.id.et_last_name) EditText lName;
 
     @Bind(R.id.email_field) TextInputLayout emailField;
-    @Bind(R.id.et_email) TextInputEditText emailAdd;
+    @Bind(R.id.et_email) EditText emailAdd;
 
     @Bind(R.id.password_field) TextInputLayout passwordField;
-    @Bind(R.id.et_password) TextInputEditText password;
+    @Bind(R.id.et_password) EditText password;
 
     @Bind(R.id.confirm_password_field) TextInputLayout cPasswordField;
-    @Bind(R.id.et_confirm_password) TextInputEditText cfPassword;
+    @Bind(R.id.et_confirm_password) EditText cfPassword;
 
     @Bind(R.id.address_field) TextInputLayout addressField;
-    @Bind(R.id.et_address) TextInputEditText address;
+    @Bind(R.id.et_address) EditText address;
 
     @Bind(R.id.country_field) TextInputLayout countryField;
-    @Bind(R.id.et_country) TextInputEditText country;
+    @Bind(R.id.et_country) EditText country;
 
     @Bind(R.id.state_field) TextInputLayout stateField;
-    @Bind(R.id.et_state) TextInputEditText state;
+    @Bind(R.id.et_state) EditText state;
 
     @Bind(R.id.lga_field) TextInputLayout lgaField;
-    @Bind(R.id.et_lga) TextInputEditText lga;
+    @Bind(R.id.et_lga) EditText lga;
 
     @Bind(R.id.btnSignUp) Button signUpBtn;
 
@@ -133,9 +134,13 @@ public class SignupFragment extends Fragment implements View.OnClickListener{
             if( isEmpty(stateStr)) setError(stateField, "Input a valid state");
             if( isEmpty(lgaStr)) setError(lgaField, "Input a valid local government");
 
-            if( validateAllFields( firstName, lastName, email, passw, cpassw, addr)){
-                APIClient.getInstance().doSignUp( getActivity(), firstName,
-                        lastName, email, passw, addr, countryStr, stateStr, lgaStr);
+            if( validateAllFields( firstName, lastName, email, passw, cpassw, addr,
+                    countryStr, stateStr, lgaStr)){
+                RegisterUser user = new RegisterUser(firstName, lastName,
+                        email, passw, addr, countryStr, stateStr, lgaStr);
+
+                Log.e(TAG, "onClick: "+user.toString() );
+                APIClient.getInstance().doSignUp( getActivity(), user);
             }
         }
     }

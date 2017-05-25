@@ -9,19 +9,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import ng.com.iqubesolutions.drinkshub.adapter.RecyclerAdapter;
-import ng.com.iqubesolutions.drinkshub.helper.FeedClassUIHelper;
 import ng.com.iqubesolutions.drinkshub.helper.FontChangeCrawler;
 import ng.com.iqubesolutions.drinkshub.model.Item;
 
 import java.util.ArrayList;
-
-import static android.content.ContentValues.TAG;
 
 
 public class MainFragment extends Fragment {
@@ -29,7 +25,6 @@ public class MainFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     RecyclerAdapter cursorAdapter;
 
-    FeedClassUIHelper uiHelper;
     private String mParam1;
     private String mParam2;
 
@@ -65,7 +60,6 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        uiHelper = new FeedClassUIHelper(view);
 
         fab = (FloatingActionButton) view.findViewById(R.id.fab_feed);
         recyclerView = (RecyclerView) view.findViewById( R.id.recyclerview );

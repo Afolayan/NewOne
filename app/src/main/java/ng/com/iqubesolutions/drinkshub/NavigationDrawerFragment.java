@@ -91,41 +91,19 @@ public class NavigationDrawerFragment extends Fragment {
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
-        userPhoto = (ImageView) layout.findViewById(R.id.image_view);
-
-        userCompanyName = (TextView) layout.findViewById(R.id.text_company_name);
+        //userCompanyName = (TextView) layout.findViewById(R.id.text_company_name);
         //userCompanyName.setText("");  //change company name from here
-        userRole = (TextView) layout.findViewById(R.id.text_role);
+        userRole = (TextView) layout.findViewById(R.id.text_email);
         //userRole.setText("");  //change user role from here
 
-        userPhoto = (ImageView) layout.findViewById( R.id.image_view);
+        userPhoto = (ImageView) layout.findViewById( R.id.drawer_image );
 
         //change image when we have image resource from internet request
-        Bitmap bitmap = BitmapFactory.decodeResource( getActivity().getResources(), R.drawable.image);
+        Bitmap bitmap = BitmapFactory.decodeResource( getActivity().getResources(), R.drawable.photo);
 
         userPhoto.setImageBitmap(UIHelper.getCircularBitmapWithWhiteBorder(bitmap, 3));
 
-        imageSettings = (ImageView) layout.findViewById(R.id.image_nav_settings);
-            imageSettings.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //go to settings page
-                }
-            });
-            imageLike = (ImageView) layout.findViewById(R.id.image_heart);
-            imageLike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //like
-                }
-            });
-            imageWidgets = (ImageView) layout.findViewById(R.id.image_item);
-            imageWidgets.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
+       ;
 
         return layout;
     }
@@ -248,12 +226,5 @@ public class NavigationDrawerFragment extends Fragment {
 
     public interface FragmentDrawerListener {
         public void onDrawerItemSelected(View view, int position);
-    }
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        //changing the fonts
-        FontChangeCrawler fontChanger = new FontChangeCrawler(getActivity().getAssets(), "fonts/proxima-nova-regular.ttf");
-        fontChanger.replaceFonts((ViewGroup) this.getView());
     }
 }
